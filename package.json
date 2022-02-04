@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:css": "npx tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/index.css --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -36,6 +37,9 @@
     ]
   },
   "devDependencies": {
-    "miragejs": "^0.1.41"
+    "autoprefixer": "^10.4.2",
+    "miragejs": "^0.1.41",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.18"
   }
 }
