@@ -8549,7 +8549,7 @@
 
 "postcss-color-gray@^5.0.0":
   "integrity" "sha512-q6BuRnAGKM/ZRpfDascZlIZPjvwsRye7UDNalqVz3s7GDxMtqPY6+Q871liNxsonUw8oC61OG+PSaysYpl1bnw=="
-  "resolved" "https://registry.npmjs.org/postcss-color-gray/-/postcss-color-gray-5.0.0.tgz"
+  "resolved" "https://registry.npmjs.org/postcss-color-gray/-/postcss-color-slate-5.0.0.tgz"
   "version" "5.0.0"
   dependencies:
     "@csstools/convert-colors" "^1.4.0"
