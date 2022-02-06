@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import CategoryFilter from '../CategoryFilter/CategoryFilter';
 import Pagination from '../Pagination/Pagination';
-import Posts from '../Posts/Posts';
+import PostList from '../PostList/PostList';
 import { getPagination } from '../../utils/getPagination';
 
 export default function SearchPage() {
@@ -79,7 +79,7 @@ export default function SearchPage() {
         <CategoryFilter list={categories} onSelect={onSelect} />
       </div>
       <div className="md:col-span-4 lg:col-span-5">
-        <Posts list={filteredPosts} pagination={pagination} />
+        <PostList list={filteredPosts} pagination={pagination} />
         <Pagination
           pagination={pagination}
           setPagination={setPagination}

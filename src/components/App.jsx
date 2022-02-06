@@ -5,7 +5,7 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import PostDetails from './Posts/PostDetails';
+import PostDetailPage from './PostDetailPage/PostDetailPage';
 import React from 'react';
 import SearchPage from './SearchPage/SearchPage';
 
@@ -15,7 +15,7 @@ export function App() {
       <Routes>
         <Route path="*" element={<Navigate to="/posts" />} />
         <Route path="/posts" element={<SearchPage />} />
-        <Route path="/posts/:id" element={<PostDetails />} />
+        <Route path="/posts/:id" element={<PostDetailPage />} />
       </Routes>
     </Router>
   );

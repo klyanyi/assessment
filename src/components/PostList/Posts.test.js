@@ -1,7 +1,10 @@
-import Posts, { PostInfo } from './Posts';
 import { render, screen } from '@testing-library/react';
 
+import { Card } from './Card';
+import { PostList } from './PostList';
 import React from 'react';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 
 const mockData = [
   {
@@ -71,8 +74,13 @@ const mockPagination = {
   maxPages: 5,
 };
 
-test('Test for PostInfo', () => {
-  render(<PostInfo post={mockData[0]} />);
+const renderWithRouter = (ui, { route = '/' } = {}) => {
+  window.history.pushState({}, 'Test page', route);
+  return render(ui, { wrapper: Router });
+};
+
+test('Test for Post info card', () => {
+  renderWithRouter(<Card post={mockData[0]} />);
   const titleElem = screen.getByText(mockData[0].title);
   expect(titleElem).toBeInTheDocument();
   expect(titleElem).toHaveTextContent(
@@ -86,8 +94,12 @@ test('Test for PostInfo', () => {
 });
 
 test('Test for List of Posts', () => {
-  const { container } = render(
-    <Posts list={mockData} pagination={mockPagination} />
+  // const history = createMemoryHistory();
+  // history.push('/posts');
+  const { container } = renderWithRouter(
+    // <Router history={history}>
+    <PostList list={mockData} pagination={mockPagination} />
+    // </Router>
   );
   expect(container).toBeInTheDocument();
   expect(container).toHaveTextContent(mockData[0].title);
