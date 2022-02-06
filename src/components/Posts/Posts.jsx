@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 export function PostInfo({ post }) {
+
   return (
-    <div id={post.id} className="flex flex-col bg-slate-100 rounded-lg p-4 hover:drop-shadow-xl hover:cursor-pointer hover:-translate-y-2">
+    <div
+      id={post.id}
+      className="flex flex-col bg-slate-100 rounded-lg p-4 hover:drop-shadow-xl hover:cursor-auto"
+    >
       <div className="flex flex-wrap justify-center">
         {post.categories.map((c) => (
           <span
@@ -37,6 +42,13 @@ export function PostInfo({ post }) {
           </p>
         </div>
       </div>
+
+      <Link
+        className="text-md text-slate-500 mx-auto mt-2 hover:text-slate-800"
+        to={`/posts/${post.id}`}
+      >
+        Read more
+      </Link>
     </div>
   );
 }

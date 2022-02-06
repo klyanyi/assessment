@@ -8,5 +8,10 @@ createServer({
     this.get('/posts', () => {
       return data;
     });
+
+    this.get('/posts/:id', (schema, request) => {
+      const post = data.posts.filter((d) => d.id === request.params.id)[0];
+      return post;
+    });
   },
 });
