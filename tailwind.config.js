@@ -1,9 +1,3 @@
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  theme: {
-    container: {
-      center: true,
-    },
-  },
-  plugins: [],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
 };

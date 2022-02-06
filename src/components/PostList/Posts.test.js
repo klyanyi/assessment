@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import { Card } from './Card';
-import { PostList } from './PostList';
+import PostList from './PostList';
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
@@ -86,11 +86,11 @@ test('Test for Post info card', () => {
   expect(titleElem).toHaveTextContent(
     'in hac habitasse platea dictumst maecenas ut massa quis augue'
   );
-  expect(titleElem).toHaveClass('text-2xl font-bold my-4 text-slate-800');
+  expect(titleElem).toHaveClass('text-2xl font-bold my-4 text-gray-800');
 
   const summaryElem = screen.getByText(mockData[0].summary);
   expect(summaryElem).toBeInTheDocument();
-  expect(summaryElem).toHaveClass('text-md self-start my-4 text-slate-900');
+  expect(summaryElem).toHaveClass('text-md self-start my-4 text-gray-900');
 });
 
 test('Test for List of Posts', () => {

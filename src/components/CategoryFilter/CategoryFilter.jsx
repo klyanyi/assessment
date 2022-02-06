@@ -35,7 +35,7 @@ export default function CategoryFilter({ list, onSelect }) {
 
   return (
     <>
-      <p className="font-bold text-xl mb-4 text-slate-800">Category</p>
+      <p className="font-bold text-xl mb-4 text-gray-800">Category</p>
       <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-1">
         {[...list.keys()].map(
           (key, idx) =>
@@ -53,7 +53,7 @@ export default function CategoryFilter({ list, onSelect }) {
                 />
                 <label
                   htmlFor={`category-filter-${key}`}
-                  className={`ml-3 text-md hover:cursor-pointer text-slate-700 ${
+                  className={`ml-3 text-md hover:cursor-pointer text-gray-700 ${
                     selected[idx] === true ? 'font-bold' : ''
                   }`}
                 >

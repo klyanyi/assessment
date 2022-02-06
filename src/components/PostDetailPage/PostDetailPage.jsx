@@ -16,25 +16,25 @@ export default function PostDetails() {
 
   return (
     <div className="">
-      <div className="bg-slate-300 p-8 mx-auto">
+      <div className="bg-gray-300 p-8 mx-auto">
         <div className="container p-8 md:p-20">
-          <h1 className="text-3xl md:text-6xl text-slate-800 font-bold mb-8">
+          <h1 className="text-3xl md:text-6xl text-gray-800 font-bold mb-8">
             {post.title}
           </h1>
           <div className="text-md md:text-2xl my-8">
             <p>
-              <span className="text-slate-600 mb-4">Quick Summary: </span>
-              <span className="text-slate-800">{post.summary}</span>
+              <span className="text-gray-600 mb-4">Quick Summary: </span>
+              <span className="text-gray-800">{post.summary}</span>
             </p>
           </div>
           <div className="flex">
             <img
-              alt={post?.author?.avatar}
+              alt={post?.author?.avatar || 'avatar'}
               className="rounded-full bg-white p-2 mr-4"
               src={post?.author?.avatar}
             />
             <div className="self-center">
-              <p className="text-md text-slate-600 font-bold uppercsase py-1">
+              <p className="text-md text-gray-600 font-bold uppercsase py-1">
                 <span className="font-normal">by</span> {post?.author?.name}{' '}
                 <span className="font-normal">in</span>{' '}
                 {post.categories &&
@@ -44,7 +44,7 @@ export default function PostDetails() {
                     </span>
                   ))}
               </p>
-              <p className="text-md text-slate-500">
+              <p className="text-md text-gray-500">
                 {new Date(post.publishDate).toDateString()}
               </p>
             </div>

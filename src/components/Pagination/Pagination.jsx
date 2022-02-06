@@ -27,7 +27,7 @@ export default function Pagination({ pagination, setPagination, list }) {
     <div className="flex justify-center my-4">
       <button
         onClick={pagination.startIndex === 0 ? null : prevPage}
-        className={`p-2 ${pagination.startIndex === 0 ? 'text-slate-300 hover:cursor-auto' : 'text-slate-800'}`}
+        className={`p-2 ${pagination.startIndex === 0 ? 'text-gray-300 hover:cursor-auto' : 'text-gray-800'}`}
       >
         &laquo;
       </button>
@@ -37,7 +37,7 @@ export default function Pagination({ pagination, setPagination, list }) {
             key={page}
             onClick={() => goToPage(page)}
             className={`px-4 ${
-              pagination.currentPage - 1 === index ? 'text-white bg-slate-400 rounded-full font-bold hover:cursor-auto' : 'text-slate-800'
+              pagination.currentPage - 1 === index ? 'text-white bg-gray-400 rounded-full font-bold hover:cursor-auto' : 'text-gray-800'
             }`}
           >
             {page}
@@ -50,8 +50,8 @@ export default function Pagination({ pagination, setPagination, list }) {
         }
         className={`p-2 ${
           pagination.lastPageIndex === pagination.currentPage
-            ? 'text-slate-300 hover:cursor-auto'
-            : 'text-slate-800'
+            ? 'text-gray-300 hover:cursor-auto'
+            : 'text-gray-800'
         }`}
       >
         &raquo;

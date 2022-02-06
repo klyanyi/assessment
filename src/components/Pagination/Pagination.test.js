@@ -24,7 +24,7 @@ test('Test for Pagination', () => {
   expect(btns[btns.length - 1]).toHaveTextContent('»');
   expect(btns[1]).toHaveClass(
     // active class
-    'px-4 text-white bg-slate-400 rounded-full font-bold hover:cursor-auto'
+    'px-4 text-white bg-gray-400 rounded-full font-bold hover:cursor-auto'
   );
-  expect(btns[2]).toHaveClass('px-4 text-slate-800');
+  expect(btns[2]).toHaveClass('px-4 text-gray-800');
 });
