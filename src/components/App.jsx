@@ -15,41 +15,45 @@ export function App() {
     fetch('/api/posts')
       .then((response) => response.json())
       .then((json) => {
-        const list = json.posts;
-        setPosts(list);
-        setFilteredPosts(list);
+        setPosts(json.posts);
       });
   }, []);
 
   useEffect(() => {
-    let categoriesMap = new Map();
+    /**
+     * Groups posts by category
+     * -- e.g.
+     * {
+     *   Surveys and Forms: {id: xx, name: 'Surveys and Forms', posts: [post1, post2, ...],
+     *   ...
+     * }
+     */
 
-    posts.map((post) => {
-      return post.categories.forEach((c) => {
-        const category = categoriesMap.get(c.name);
-        if (!category) {
-          // we use 'name' as key here because 'id' wasn't unique
-          categoriesMap.set(c.name, { ...c, posts: [] });
-        } else if (category.name === c.name) {
-          const posts = category.posts.filter((p) => p.id === post.id)[0];
-          if (!posts) {
-            categoriesMap.set(c.name, {
+    const categories = posts.reduce((prevPost, currentPost) => {
+      for (let i = 0; i < currentPost.categories.length; i++) {
+        const c = currentPost.categories[i];
+
+        const category = prevPost.get(c.name);
+        if (category) {
+          const hasPost = category.posts.has(currentPost);
+
+          if (!hasPost) {
+            prevPost.set(c.name, {
               ...c,
-              posts: [...category.posts, post],
+              posts: category.posts.add(currentPost),
             });
           }
+        } else {
+          // Initialize
+          prevPost.set(c.name, { ...c, posts: new Set([currentPost]) });
         }
-      });
-    });
+      }
 
-    /**
-     * Creates an object with category name as key, and array of posts as value
-     * -- e.g. {
-     *            Surveys and Forms: {id: xx, name: 'Surveys and Forms', posts: [post1, post2, ...],
-     *            ...
-     *         }
-     */
-    setCategories(Object.fromEntries(categoriesMap));
+      return prevPost;
+    }, new Map());
+
+    setCategories(categories);
+    setFilteredPosts(posts);
   }, [posts]);
 
   useEffect(() => {
@@ -64,6 +68,10 @@ export function App() {
       setFilteredPosts(posts);
     }
   };
+
+  if (!filteredPosts.length) {
+    return <p>Loading..</p>;
+  }
 
   return (
     <div className="container mx-auto px-8 my-8 grid gap-8 grid-cols-1 md:grid-cols-6 lg:grid-cols-6">

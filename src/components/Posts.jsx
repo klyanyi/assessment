@@ -10,12 +10,12 @@ export default function Posts({ list, pagination }) {
 
         return (
           <div
-            key={index}
+            key={post.id}
             className="flex flex-col bg-slate-100 rounded-lg p-4 hover:drop-shadow-xl hover:shadow-indigo-500/40 hover:cursor-pointer hover:-translate-y-2"
           >
             <div className="flex flex-wrap justify-center">
             {post.categories.map((c) => (
-              <span className="text-xs font-bold text-slate-500 uppercase pr-4 whitespace-nowrap tracking-wider">
+              <span key={c.id} className="text-xs font-bold text-slate-500 uppercase pr-4 whitespace-nowrap tracking-wider">
                 {c.name}
               </span>
             ))}
@@ -29,14 +29,15 @@ export default function Posts({ list, pagination }) {
             </div>
             <div className="flex">
               <img
+                alt={post.author.avatar}
                 className="rounded-full bg-white p-2 mr-4"
                 src={post.author.avatar}
               />
               <div className="self-center">
-                <p class="text-xs text-slate-600 font-bold uppercase py-1">
+                <p className="text-xs text-slate-600 font-bold uppercase py-1">
                   by {post.author.name}
                 </p>
-                <p class="text-xs text-slate-500">
+                <p className="text-xs text-slate-500">
                   {new Date(post.publishDate).toDateString()}
                 </p>
               </div>
