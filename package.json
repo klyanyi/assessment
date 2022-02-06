@@ -20,8 +20,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject",
-    "build:css": "npx tailwindcss -i ./src/styles/tailwind.css -o ./src/styles/tailwind.css --watch"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
