@@ -21,31 +21,31 @@ export default function SearchPage() {
 
   useEffect(() => {
     /**
-     * Groups posts by category
+     * Group posts by Category
      * -- e.g.
      * {
-     *   Surveys and Forms: {id: xx, name: 'Surveys and Forms', posts: [post1, post2, ...],
+     *   Surveys and Forms: {id: xx, name: 'Surveys and Forms', posts: Set{post1, post2, ...},
      *   ...
      * }
      */
 
     const categories = posts.reduce((prevPost, currentPost) => {
       for (let i = 0; i < currentPost.categories.length; i++) {
-        const c = currentPost.categories[i];
+        const category = currentPost.categories[i];
 
-        const category = prevPost.get(c.name);
-        if (category) {
-          const hasPost = category.posts.has(currentPost);
+        const postCategory = prevPost.get(category.name);
+        if (postCategory) {
+          const hasPost = postCategory.posts.has(currentPost);
 
           if (!hasPost) {
-            prevPost.set(c.name, {
-              ...c,
-              posts: category.posts.add(currentPost),
+            prevPost.set(category.name, {
+              ...category,
+              posts: postCategory.posts.add(currentPost),
             });
           }
         } else {
           // Initialize
-          prevPost.set(c.name, { ...c, posts: new Set([currentPost]) });
+          prevPost.set(category.name, { ...category, posts: new Set([currentPost]) });
         }
       }
 

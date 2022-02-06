@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 export default function CategoryFilter({ list, onSelect }) {
+  // Array of Posts for selected Category
   let [selectedPosts, setSelectedPosts] = useState([]);
+  
+  // Array of true/false values for each Category
   let [selected, setSelected] = useState([]);
 
   useEffect(() => {
@@ -10,7 +13,7 @@ export default function CategoryFilter({ list, onSelect }) {
 
   useEffect(() => {
     /**
-     * Get a set of selected posts
+     * Returns a set of selected posts
      */
     const filteredPosts = selected.reduce((prevPosts, isSelected, idx) => {
       if (isSelected) {
@@ -29,7 +32,7 @@ export default function CategoryFilter({ list, onSelect }) {
 
   const onClick = (idx) => {
     const prevSelected = [...selected];
-    prevSelected[idx] = !prevSelected[idx];
+    prevSelected[idx] = !prevSelected[idx]; // toggle checked/unchecked checkbox
     setSelected(prevSelected);
   };
 
