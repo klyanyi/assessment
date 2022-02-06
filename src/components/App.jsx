@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import CategoryFilter from './CategoryFilter';
-import Pagination from './Pagination';
-import Posts from './Posts';
+import CategoryFilter from './CategoryFilter/CategoryFilter';
+import Pagination from './Pagination/Pagination';
+import Posts from './Posts/Posts';
 import { getPagination } from '../utils/getPagination';
 
 export function App() {

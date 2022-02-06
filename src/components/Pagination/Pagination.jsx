@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPagination } from '../utils/getPagination';
+import { getPagination } from '../../utils/getPagination';
 
 export default function Pagination({ pagination, setPagination, list }) {
   const prevPage = () => {
